@@ -2,6 +2,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const AdminRoutes = require('./routes/adminRoute');
+const connection = require('./config/db');
+const mysql2 = require("./tables/query");
 
 const app = express();
 app.use(bodyParser.json());
