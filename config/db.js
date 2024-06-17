@@ -20,16 +20,16 @@ const mysql2 = require('mysql2');
 
 
 const connection = mysql2.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'nodejs',
-
-    // host: '185.131.55.196',
-    // user: 'sa',
-    // password: 'Zs94gpFcCIovhW',
+    // host: 'localhost',
+    // user: 'root',
+    // password: '',
     // database: 'nodejs',
-    // port : 1533,
+
+    host: '185.131.55.196',
+    user: 'sa',
+    password: 'Zs94gpFcCIovhW',
+    database: 'TESTDB',
+    port : 1533,
 });
 
 connection.connect(err => {
