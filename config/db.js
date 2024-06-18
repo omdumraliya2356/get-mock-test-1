@@ -57,9 +57,9 @@ const pool ={
 
   host: "localhost",
   port: 3306,
-  user: "u739277164_demo",
-  database: "u739277164_demo",
-  password: "Demo@007"
+  user: "u739277164_gmt_test",
+  database: "u739277164_gmt_test",
+  password: "Zs94gpFcClovhW"
 };
 
 // Example usage of the pool to create a table
