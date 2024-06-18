@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const AdminRoutes = require('./routes/adminRoute');
 const pool = require('./config/db');
 const mysql = require("mysql2/promise");
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3306;
 
 const app = express();
 app.use(bodyParser.json());
