@@ -2,7 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const AdminRoutes = require('./routes/adminRoute');
-const pool = require('./config/db');
+const connection = require('./config/db');
 const port = process.env.PORT || 3000;
 
 const app = express();

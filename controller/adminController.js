@@ -1,6 +1,6 @@
 // controllers/userController.js
 const Admin = require('../models/adminModel');
-const pool = require("../config/db");
+const connection = require("../config/db");
 
 const register = (req, res) => {
     const { userName, password } = req.body;
