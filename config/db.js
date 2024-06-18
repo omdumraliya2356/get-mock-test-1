@@ -93,10 +93,11 @@ const mysql = require('mysql2');
 
 const pool = mysql.createPool({
     connectionLimit: 10,
-    host: "localhost",
-    user: "u739277164_demo21",
-    database: "u739277164_demo21",
-    password: "Demo@007",
+    host: "185.131.55.196",
+    user: "sa",
+    database: "gmt_test",
+    password: "Zs94gpFcClovhW",
+    port: 1533,
     debug: false
 });
 
