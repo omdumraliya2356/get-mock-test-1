@@ -1,13 +1,13 @@
 const express = require("express");
-const connection = require("../config/db");
+const pool = require("../config/db");
 const mysql2 = require("mysql2");
 
-connection.connect(function(err){
+pool.connect(function(err){
     if(err){
         console.log(err);
     }else{
         var sql = "CREATE TABLE admins(id INT AUTO_INCREMENT primary key NOT NULL, userName varchar(255), password varchar(255))";
-        connection.query(sql,(err, result)=>{
+        pool.query(sql,(err, result)=>{
             if(err){
                 console.log(err);
             }else{
