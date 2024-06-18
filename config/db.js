@@ -49,11 +49,17 @@ const mysql2 = require('mysql2');
 
 // Create a connection pool
 const pool ={
-  host: "185.131.55.196",
-  port: 1533,
-  user: "sa",
-  password: "Zs94gpFcClovhW",
-  database: "gmt_test"
+  // host: "185.131.55.196",
+  // port: 1533,
+  // user: "sa",
+  // password: "Zs94gpFcClovhW",
+  // database: "gmt_test"
+
+  host: "localhost",
+  port: 3306,
+  user: "u739277164_demo",
+  database: "u739277164_demo",
+  password: "Demo@007"
 };
 
 // Example usage of the pool to create a table
