@@ -1,6 +1,6 @@
 const express = require("express");
 const connection = require("../config/db");
-const mysql2 = require("mysql2");
+const mysql = require("mysql");
 
 connection.connect(function(err){
     if(err){
