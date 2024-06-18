@@ -1,104 +1,28 @@
-// // config/db.js
-// const mysql2 = require('mysql2');
+const mysql = require('mysql')
 
-// // const {
-// //     createPool
-// // } = require('mysql2');
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "u739277164_demo21",
+    password: "Demo@007",
+    database: " u739277164_demo21"
+})
 
-// // const pool = createPool({
-// //     host: '185.131.55.196',
-// //     user: 'sa',
-// //     password: 'Zs94gpFcCIovhW',
-// //     database: 'nodejs',
-// //     port : 1533
-
-// //     host: 'localhost',
-// //     user: 'root',
-// //     password: '',
-// //     database: 'nodejs',
-// // });
-
-
-// // const connection = mysql.createConnection({
-// //     // host: 'localhost',
-// //     // user: 'root',
-// //     // password: '',
-// //     // database: 'nodejs',
-
-// //     host: '185.131.55.196',
-// //     user: 'sa',
-// //     password: 'Zs94gpFcCIovhW',
-// //     database: 'TESTDB',
-// //     port : 1533,
-
-// //     // host: 'localhost',
-// //     // user: 'u739277164_demo',
-// //     // database: 'u739277164_demo',
-// //     // password: 'Demo@007',
-// //     // port : 3306,
-// // });
-
-// // connection.connect(err => {
-// //     if (err) {
-// //         console.error('Error connecting to MySQL:', err.stack);
-// //         return;
-// //     }
-// //     console.log('Connected to MySQL as ID', connection.threadId);
-// // });
-
-
-// // Create a connection pool
-// const pool ={
-//   // host: "185.131.55.196",
-//   // port: 1533,
-//   // user: "sa",
-//   // password: "Zs94gpFcClovhW",
-//   // database: "gmt_test"
-
-//   host: "localhost",
-//   port: 3306,
-//   user: "u739277164_gmt_test",
-//   database: "u739277164_gmt_test",
-//   password: "Zs94gpFcClovhW"
-// };
-
-// // Example usage of the pool to create a table
-// // pool.getConnection((err, connection) => {
-// //   if (err) {
-// //     console.error(err);
-// //     return;
-// //   }
-
-// //   const sql = `CREATE TABLE IF NOT EXISTS admins (
-// //     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-// //     userName VARCHAR(255),
-// //     password VARCHAR(255)
-// //   )`;
-
-// //   connection.query(sql, (err, result) => {
-// //     // Release the connection back to the pool
-// //     connection.release();
-
-// //     if (err) {
-// //       console.error(err);
-// //     } else {
-// //       console.log("Table created");
-// //     }
-// //   });
-// // });
-
-// module.exports = pool;
-
-const mysql = require('mysql2');
-
-const pool = mysql.createPool({
-    connectionLimit: 10,
-    host: "185.131.55.196",
-    user: "sa",
-    database: "gmt_test",
-    password: "Zs94gpFcClovhW",
-    port: 1533,
-    debug: false
+// Connecting to database
+connection.connect(function (err) {
+    if (err) {
+        console.log("Error in the connection")
+        console.log(err)
+    }
+    else {
+        console.log(`Database Connected`)
+        connection.query(`SHOW DATABASES`,
+            function (err, result) {
+                if (err)
+                    console.log(`Error executing the query - ${err}`)
+                else
+                    console.log("Result: ", result)
+            })
+    }
 });
 
-module.exports = pool;
+module.exports = connection
