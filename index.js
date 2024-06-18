@@ -24,6 +24,11 @@ dbconnection();
 
 app.use('/api', AdminRoutes);
 
+app.get('/', (req, res) => {
+  res.send('Admins table creation triggered');
+});
+
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
