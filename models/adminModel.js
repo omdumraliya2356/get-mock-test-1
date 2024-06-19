@@ -1,45 +1,45 @@
 // models/adminModel.js
-const connection = require('../config/db');
+const webconfig = require('../config/db');
 
 const Admin = {
     create: (data, callback) => {
         const query = 'INSERT INTO admins (userName, password) VALUES (?, ?)';
-        connection.query(query, [data.userName, data.password], (err, result) => {
+        webconfig.query(query, [data.userName, data.password], (err, result) => {
             if (err) return callback(err);
             callback(null, result);
         });
     },
     findAdmin: (callback) => {
         const query = 'SELECT * FROM admins';
-        connection.query(query, (err, results) => {
+        webconfig.query(query, (err, results) => {
             if (err) return callback(err);
             callback(null, results);
         });
     },
     findById: (id, callback) => {
         const query = 'SELECT * FROM admins WHERE id = ?';
-        connection.query(query, [id], (err, results) => {
+        webconfig.query(query, [id], (err, results) => {
             if (err) return callback(err);
             callback(null, results[0]);
         });
     },
     findByUsername: (username, callback) => {
         const query = 'SELECT * FROM admins WHERE userName = ?';
-        connection.query(query, [username], (err, results) => {
+        webconfig.query(query, [username], (err, results) => {
             if (err) return callback(err);
             callback(null, results[0]);
         });
     },
     update: (id, data, callback) => {
         const query = 'UPDATE admins SET userName = ?, password = ? WHERE id = ?';
-        connection.query(query, [data.userName, data.password, id], (err, result) => {
+        webconfig.query(query, [data.userName, data.password, id], (err, result) => {
             if (err) return callback(err);
             callback(null, result);
         });
     },
     delete: (id, callback) => {
         const query = 'DELETE FROM admins WHERE id = ?';
-        connection.query(query, [id], (err, result) => {
+        webconfig.query(query, [id], (err, result) => {
             if (err) return callback(err);
             callback(null, result);
         });

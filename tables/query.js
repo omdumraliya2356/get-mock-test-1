@@ -1,13 +1,13 @@
 const express = require("express");
-const connection = require("../config/db");
-const mysql = require("mysql");
+const webconfig = require("../config/db");
+const mssql = require("mssql");
 
-connection.connect(function(err){
+webconfig.connect(function(err){
     if(err){
         console.log(err);
     }else{
         var sql = "CREATE TABLE admins(id INT AUTO_INCREMENT primary key NOT NULL, userName varchar(255), password varchar(255))";
-        connection.query(sql,(err, result)=>{
+        webconfig.query(sql,(err, result)=>{
             if(err){
                 console.log(err);
             }else{
@@ -17,4 +17,4 @@ connection.connect(function(err){
     }
 });
 
-module.exports = mysql2
+module.exports = webconfig

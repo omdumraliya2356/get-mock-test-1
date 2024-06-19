@@ -1,28 +1,27 @@
-const mysql = require('mysql')
+const sql = require('mssql');
 
-const connection = mysql.createConnection({
-    host: "localhost",
-    user: "u739277164_demo21",
-    password: "Demo@007",
-    database: " u739277164_demo21"
-})
-
-// Connecting to database
-connection.connect(function (err) {
-    if (err) {
-        console.log("Error in the connection")
-        console.log(err)
+const webconfig = {
+    user: "sa",
+    password: "Zs94gpFcClovhW",
+    server: "185.131.55.196",
+    database: "gmt_test",
+    options: {
+        encrypt: false, // Use this if you're on Windows Azure
+        trustServerCertificate: true, // Add this line to bypass the certificate validation
+        port: 1533 // Specify the port here
     }
-    else {
-        console.log(`Database Connected`)
-        connection.query(`SHOW DATABASES`,
-            function (err, result) {
-                if (err)
-                    console.log(`Error executing the query - ${err}`)
-                else
-                    console.log("Result: ", result)
-            })
-    }
-});
+};
 
-module.exports = connection
+async function testConnection() {
+    try {
+        // Connect to the database
+        await sql.connect(webconfig);
+        console.log('Connection successful');
+    } catch (err) {
+        console.error('Database connection error:', err);
+    }
+}
+
+testConnection();
+
+module.exports = webconfig;
