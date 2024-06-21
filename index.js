@@ -2,8 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const AdminRoutes = require('./routes/adminRoute');
-const mssql = require("mssql");
-const webconfig = require('./config/db');
+const pool = require('./config/db');
 const port = process.env.PORT || 3000;
 
 const app = express();

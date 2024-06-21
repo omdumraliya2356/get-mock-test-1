@@ -1,13 +1,13 @@
 const express = require("express");
-const webconfig = require("../config/db");
+const pool = require("../config/db");
 const mssql = require("mssql");
 
-webconfig.connect(function(err){
+pool.connect(function(err){
     if(err){
         console.log(err);
     }else{
         var sql = "CREATE TABLE admins(id INT AUTO_INCREMENT primary key NOT NULL, userName varchar(255), password varchar(255))";
-        webconfig.query(sql,(err, result)=>{
+        pool.query(sql,(err, result)=>{
             if(err){
                 console.log(err);
             }else{

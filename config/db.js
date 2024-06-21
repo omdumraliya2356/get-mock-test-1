@@ -1,27 +1,18 @@
-const sql = require('mssql');
+const mysql = require("mysql2");
 
-const webconfig = {
-    user: "sa",
-    password: "Zs94gpFcClovhW",
-    server: "185.131.55.196",
-    database: "gmt_test",
-    options: {
-        encrypt: false, // Use this if you're on Windows Azure
-        trustServerCertificate: true, // Add this line to bypass the certificate validation
-        port: 1533 // Specify the port here
-    }
-};
+const pool = mysql.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DBNAME,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+});
 
-async function testConnection() {
-    try {
-        // Connect to the database
-        await sql.connect(webconfig);
-        console.log('Connection successful');
-    } catch (err) {
-        console.error('Database connection error:', err);
-    }
-}
+pool.getConnection((err,conn) =>  {
+    if(err) console.log(err);
+    console.log("connection successfull");
+});
 
-testConnection();
-
-module.exports = webconfig;
+module.exports = pool.promise();
